@@ -1,0 +1,91 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Deck/black_back.png" type="Texture" id=1]
+[ext_resource path="res://Deck/red_back.png" type="Texture" id=2]
+[ext_resource path="res://Game/Card.gd" type="Script" id=3]
+[ext_resource path="res://Deck/1Mask.png" type="BitMap" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "face_down"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1e-05, 1 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.15 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ false ],
+"method": "set_card"
+} ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1e-05, 1 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.15 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ true ],
+"method": "set_card"
+} ]
+}
+
+[node name="Card" type="TextureButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -544.0
+margin_bottom = -216.0
+rect_pivot_offset = Vector2( 48, 72 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+texture_normal = ExtResource( 1 )
+texture_hover = ExtResource( 2 )
+texture_click_mask = ExtResource( 4 )
+expand = true
+stretch_mode = 5
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/face_down = SubResource( 1 )
+anims/face_up = SubResource( 2 )
+[connection signal="pressed" from="." to="." method="_on_Card_pressed"]

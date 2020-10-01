@@ -1,0 +1,15 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+path="res://.import/1Mask.png-e7e9d390607c079df33aefcd3f628c05.res"
+
+[deps]
+
+source_file="res://Deck/1Mask.png"
+dest_files=[ "res://.import/1Mask.png-e7e9d390607c079df33aefcd3f628c05.res" ]
+
+[params]
+
+create_from=0
+threshold=0.0
